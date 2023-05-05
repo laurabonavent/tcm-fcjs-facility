@@ -1,5 +1,11 @@
 # @finsweet/developer-starter
 
+## 1.7.0
+
+### Minor Changes
+
+- 95e8812: facility calendar operationnal
+
 ## 1.6.0
 
 ### Minor Changes
