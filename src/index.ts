@@ -28,7 +28,6 @@ window.Webflow.push(() => {
     fixedWeekCount: false,
     showNonCurrentDates: false,
     slotMinTime: '07:00:00',
-    //height: 'auto',
     headerToolbar: {
       left: 'prev,next',
       center: 'title',
