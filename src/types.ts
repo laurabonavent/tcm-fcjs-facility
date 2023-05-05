@@ -11,6 +11,7 @@ export type Event = {
   };
   extendedProps: {
     localisation: string;
+    horaire: string;
   };
   localisation: string;
   duration: string;
@@ -22,4 +23,5 @@ export type Event = {
   endday: string;
   repertoire: string;
   getbyweekday: string;
+  allDay: boolean;
 };

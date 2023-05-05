@@ -5,6 +5,7 @@ import 'tippy.js/dist/svg-arrow.css';
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import listPlugin from '@fullcalendar/list';
+import multiMonthPlugin from '@fullcalendar/multimonth';
 import rrulePlugin from '@fullcalendar/rrule';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import tippy from 'tippy.js';
@@ -20,15 +21,18 @@ window.Webflow.push(() => {
   console.log({ events });
 
   const calendar = new Calendar(calendarElement, {
-    plugins: [dayGridPlugin, timeGridPlugin, rrulePlugin],
-    initialView: 'dayGridMonth',
+    plugins: [multiMonthPlugin, listPlugin, rrulePlugin],
+    initialView: 'multiMonthYear',
+    //initialView: 'listWeek',
+    //multiMonthMaxColumns: 1,
     fixedWeekCount: false,
     showNonCurrentDates: false,
     slotMinTime: '07:00:00',
+    //height: 'auto',
     headerToolbar: {
-      left: 'prev,next today',
+      left: 'prev,next',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,listPlugin',
+      right: 'multiMonthYear,listMonth',
     },
 
     events,
@@ -49,10 +53,18 @@ window.Webflow.push(() => {
       },
     ],*/
 
+    /*eventTimeFormat: {
+      // like '14:30:00'
+      hour: 'numeric',
+      meridiem: 'short',
+    },*/
+
     eventMouseEnter(data) {
       console.log(data.event.extendedProps);
+      const lieu = data.event.extendedProps.localisation;
+      const h = data.event.extendedProps.horaire;
       tippy(data.el, {
-        content: data.event.title + ' // ' + data.event.extendedProps.localisation,
+        content: lieu + ' indisponible // ' + h,
         placement: 'bottom',
         arrow: true,
         theme: 'light',
@@ -70,6 +82,8 @@ const getEvents = (): Event[] => {
     const event: Event = JSON.parse(script.textContent!);
     //add background to event
     event.display = 'block';
+    event.title = event.extendedProps.localisation + ' indisponible';
+    event.url = '';
 
     //apostrophe display
     event.title = event.title.replace(/&#39;/g, "'");
@@ -176,14 +190,12 @@ const getEvents = (): Event[] => {
     }
 
     //BACKGROUND COLOR :
-    if (event.repertoire === 'Spectacles') {
-      event.backgroundColor = '#c33149';
-    } else if (event.repertoire === 'Évènements') {
-      event.backgroundColor = '#333333';
-    } else if (event.repertoire === 'Jeunesse') {
-      event.backgroundColor = '#a1a1a1';
-    } else if (event.repertoire === 'Exposition') {
-      event.backgroundColor = '#76DFBA';
+    if (event.extendedProps.localisation === 'Théâtre') {
+      event.backgroundColor = '#0A0A0A';
+    } else if (event.extendedProps.localisation === 'Foyer') {
+      event.backgroundColor = '#525252';
+    } else if (event.extendedProps.localisation === 'Studio') {
+      event.backgroundColor = '#8f8f8f';
     }
 
     return event;

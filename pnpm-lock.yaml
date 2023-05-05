@@ -13,6 +13,9 @@ dependencies:
   '@fullcalendar/list':
     specifier: ^6.1.5
     version: 6.1.5(@fullcalendar/core@6.1.5)
+  '@fullcalendar/multimonth':
+    specifier: ^6.1.6
+    version: 6.1.6(@fullcalendar/core@6.1.5)
   '@fullcalendar/rrule':
     specifier: ^6.1.6
     version: 6.1.6(@fullcalendar/core@6.1.5)(rrule@2.7.2)
@@ -581,12 +584,29 @@ packages:
       '@fullcalendar/core': 6.1.5
     dev: false
 
+  /@fullcalendar/daygrid@6.1.6(@fullcalendar/core@6.1.5):
+    resolution: {integrity: sha512-HKxprePWXRyg1Shn7p0CWgggFZVwvs+Pg0Z9uSvx6a58wP1yTbOoJHhSVv5CDsfjnq1a0y6DsJbPP/V2LDl6bg==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.6
+    dependencies:
+      '@fullcalendar/core': 6.1.5
+    dev: false
+
   /@fullcalendar/list@6.1.5(@fullcalendar/core@6.1.5):
     resolution: {integrity: sha512-Z34h32ZuI0+sU6GdV2WrXnF6Z17VvsagjSBY+8/bMrMHfDoLbT76sGfoI6N0GCAr7aW9N2NgWWz8kuQw9uFAZQ==}
     peerDependencies:
       '@fullcalendar/core': ~6.1.5
     dependencies:
       '@fullcalendar/core': 6.1.5
+    dev: false
+
+  /@fullcalendar/multimonth@6.1.6(@fullcalendar/core@6.1.5):
+    resolution: {integrity: sha512-e/BGKTbVC00QFwkk3olKEYzkV+8sTFCxy6/oKm2CCfDKoWuu9jkCf5fgGhiflZ0Y7V0CLQzADuuZsFIxz9DDJA==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.6
+    dependencies:
+      '@fullcalendar/core': 6.1.5
+      '@fullcalendar/daygrid': 6.1.6(@fullcalendar/core@6.1.5)
     dev: false
 
   /@fullcalendar/rrule@6.1.6(@fullcalendar/core@6.1.5)(rrule@2.7.2):
